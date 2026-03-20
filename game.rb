@@ -1,5 +1,6 @@
 require_relative "word_loader"
 require_relative "display"
+require_relative "save_load"
 
 class Game
 	def initialize
@@ -15,6 +16,11 @@ def play
 
 		puts "type a letter"
 		input = gets.chomp.downcase
+		if input == "save"
+			SaveLoad.save_game(self)
+			puts "Game Saved!"
+			break
+		end
 
 		process_input(input)
 
